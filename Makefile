@@ -39,8 +39,6 @@ SRCS =  ft_isalpha.c \
 		
 OBJS = ${SRCS:.c=.o}
 
-OBJS_BONUS = ${SRCS_BONUS:.c=.o}
-
 NAME = libft.a
 
 NAMESO = libft.so
