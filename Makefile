@@ -1,6 +1,7 @@
 NAME = libft.a
-CC = gcc
-CFLAGS = -Wall -Wextra -Werror
+CC = cc
+CFLAGS = -Wall -Wextra -Werror -I$(INCLUDE)
+
 
 SRCS =  ft_isalpha.c \
 		ft_isdigit.c \
@@ -36,28 +37,42 @@ SRCS =  ft_isalpha.c \
 		ft_split.c \
 		ft_itoa.c \
 		ft_strtrim.c \
-		
+
+BSRCS =	ft_lstnew.c \
+		ft_lstadd_front.c \
+		ft_lstsize.c \
+		ft_lstlast.c \
+		ft_lstadd_back.c \
+		ft_lstdelone.c \
+		ft_lstclear.c \
+		ft_lstiter.c \
+		ft_lstmap.c
+
+INCLUDE = .
+
 OBJS = ${SRCS:.c=.o}
 
-NAME = libft.a
+OBJS_BONUS = ${BSRCS:.c=.o}
 
-NAMESO = libft.so
+rm = rm -f
+
 
 %.o : %.c
-	cc ${CFLAGS} -c $< -o ${<:.c=.o}
+	${CC} $(CFLAGS) -c $< -o $@
 
-${NAME}: ${OBJS}
-	ar rc ${NAME} ${OBJS}
-	ranlib ${NAME}
+${NAME}: $(OBJS)
+	ar rcs $(NAME) $(OBJS)
 
-all : ${NAME}
+all: ${NAME}
+
+bonus: $(OBJS) $(OBJS_BONUS)
+	ar rcs $(NAME) $(OBJS) $(OBJS_BONUS)
 
 clean:
-	rm -f ${OBJS} ${OBJS_BONUS}
+	@rm -f ${OBJS} ${OBJS_BONUS}
 
 fclean: clean
 	rm -f ${NAME}
-	rm -f ${NAMESO}
-	rm -f a.out
 
-re: fclean all
+re: fclean $(NAME)
+.PHONY: all clean fclean re bonus

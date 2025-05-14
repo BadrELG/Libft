@@ -1,33 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memchr.c                                        :+:      :+:    :+:   */
+/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bael-gho <bael-gho@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bael-gho <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/04 12:45:38 by bael-gho          #+#    #+#             */
-/*   Updated: 2025/05/04 12:52:54 by bael-gho         ###   ########.fr       */
+/*   Created: 2025/05/14 03:30:58 by bael-gho          #+#    #+#             */
+/*   Updated: 2025/05/14 03:32:14 by bael-gho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include "libft.h"
 
-void	*ft_memchr(const void *s, int c, size_t n)
+void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-	unsigned char	*str;
-	unsigned char	cc;
-	size_t			i;
+	t_list	*temp;
 
-	str = (unsigned char *)s;
-	cc = (unsigned char)c;
-	i = 0;
-	while (i < n)
+	if (!lst || !new)
+		return ;
+	if (*lst == NULL)
 	{
-		if (str[i] == cc)
-		{
-			return ((void *)&str[i]);
-		}
-		i++;
+		*lst = new;
+		return ;
 	}
-	return (NULL);
+	temp = *lst;
+	while (temp->next != NULL)
+		temp = temp->next;
+	temp->next = new;
 }
