@@ -37,6 +37,9 @@ SRCS =  ft_isalpha.c \
 		ft_split.c \
 		ft_itoa.c \
 		ft_strtrim.c \
+		ft_convert.c \
+		ft_2convert.c \
+		ft_printf.c \
 
 BSRCS =	ft_lstnew.c \
 		ft_lstadd_front.c \

@@ -6,7 +6,7 @@
 /*   By: badr <badr@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/04 13:36:43 by bael-gho          #+#    #+#             */
-/*   Updated: 2025/07/03 15:13:35 by badr             ###   ########.fr       */
+/*   Updated: 2025/07/29 21:53:06 by badr             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@
 # include <stdlib.h>
 # include <string.h>
 # include <unistd.h>
+# include <stdarg.h>
+# include <stddef.h>
 
 typedef struct s_list
 {
@@ -73,6 +75,15 @@ void	ft_lstdelone(t_list *lst, void (*del)(void*));
 void	ft_lstclear(t_list **lst, void (*del)(void*));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 int		ft_lstsize(t_list *lst);
+int	ft_puthex(char c, unsigned long n);
+int	ft_putpercent(void);
+int	ft_conv(char c, va_list args);
+int	ft_putptr(void *ptr);
+int	ft_putchar(char c);
+int	ft_putstr(char *str);
+int	ft_printf(const char *format, ...);
+int	ft_putnbr(int n);
+int	ft_putnbr_unsigned(unsigned int n);
 
 /// Personal Fonctions 
 
