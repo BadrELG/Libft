@@ -40,6 +40,8 @@ SRCS =  ft_isalpha.c \
 		ft_convert.c \
 		ft_2convert.c \
 		ft_printf.c \
+		get_next_line.c \
+		get_next_line_utils.c \
 		ft_malloc.c \
 		ft_free.c \
 		garbage.c \

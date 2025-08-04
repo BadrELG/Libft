@@ -6,7 +6,7 @@
 /*   By: badr <badr@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/04 13:36:43 by bael-gho          #+#    #+#             */
-/*   Updated: 2025/08/05 00:07:49 by badr             ###   ########.fr       */
+/*   Updated: 2025/08/05 00:19:46 by badr             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,10 @@
 # include <stdarg.h>
 # include <stddef.h>
 # include "garbage_collector.h"
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 10
+# endif
 
 typedef struct s_list
 {
@@ -89,5 +93,12 @@ int	ft_putnbr_unsigned(unsigned int n);
 /// Personal Fonctions 
 
 void	ft_tab_free(char **tab);
+
+/// Get Next Line Functions
+char	*get_next_line(int fd);
+size_t	ft_checklen(char *str, char str_line);
+char	*ft_strcpy(char *dest, char *src);
+size_t	ft_check_new_line(char *str);
+char 	*ft_clean_line(char *line);
 
 #endif
