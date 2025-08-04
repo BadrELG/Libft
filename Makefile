@@ -40,6 +40,9 @@ SRCS =  ft_isalpha.c \
 		ft_convert.c \
 		ft_2convert.c \
 		ft_printf.c \
+		ft_malloc.c \
+		ft_free.c \
+		garbage.c \
 
 BSRCS =	ft_lstnew.c \
 		ft_lstadd_front.c \

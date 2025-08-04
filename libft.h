@@ -6,7 +6,7 @@
 /*   By: badr <badr@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/04 13:36:43 by bael-gho          #+#    #+#             */
-/*   Updated: 2025/07/29 21:53:06 by badr             ###   ########.fr       */
+/*   Updated: 2025/08/05 00:07:49 by badr             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # include <unistd.h>
 # include <stdarg.h>
 # include <stddef.h>
+# include "garbage_collector.h"
 
 typedef struct s_list
 {
@@ -87,6 +88,6 @@ int	ft_putnbr_unsigned(unsigned int n);
 
 /// Personal Fonctions 
 
-void	ft_free(char **tab);
+void	ft_tab_free(char **tab);
 
 #endif
