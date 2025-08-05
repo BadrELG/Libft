@@ -6,11 +6,11 @@
 /*   By: badr <badr@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/05 00:03:46 by badr              #+#    #+#             */
-/*   Updated: 2025/08/05 14:07:28 by badr             ###   ########.fr       */
+/*   Updated: 2025/08/05 16:33:43 by badr             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "garbage_collector.h"
+#include "libft.h"
 
 t_garbage	*garbage_lstnew(void)
 {
