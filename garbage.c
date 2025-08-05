@@ -6,7 +6,7 @@
 /*   By: badr <badr@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/05 00:03:46 by badr              #+#    #+#             */
-/*   Updated: 2025/08/05 00:03:50 by badr             ###   ########.fr       */
+/*   Updated: 2025/08/05 14:07:28 by badr             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,17 +26,17 @@ t_garbage	*garbage_lstnew(void)
 	return (new);
 }
 
-t_garbage *garbage_lstlast(t_garbage **lst)
+t_garbage	*garbage_lstlast(t_garbage **lst)
 {
-	t_garbage *temp;
+	t_garbage	*temp;
 
 	if (!lst)
 		return (NULL);
 	temp = *lst;
-	while(temp)
+	while (temp)
 	{
 		if (temp->next == NULL)
-			break;
+			break ;
 		temp = temp->next;
 	}
 	return (temp);
@@ -45,7 +45,7 @@ t_garbage *garbage_lstlast(t_garbage **lst)
 void	garbage_lstaddback(t_garbage *new, t_garbage **lst)
 {
 	t_garbage	*temp;
-	
+
 	if (!lst)
 		return ;
 	temp = garbage_lstlast(lst);

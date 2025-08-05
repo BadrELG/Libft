@@ -6,15 +6,15 @@
 /*   By: badr <badr@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/05 00:05:01 by badr              #+#    #+#             */
-/*   Updated: 2025/08/05 00:05:03 by badr             ###   ########.fr       */
+/*   Updated: 2025/08/05 14:05:16 by badr             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "garbage_collector.h"
 
-t_garbage *set_garbage(void)
+t_garbage	*set_garbage(void)
 {
-	t_garbage *head;
+	t_garbage	*head;
 
 	head = garbage_lstnew();
 	if (!head)
@@ -22,9 +22,9 @@ t_garbage *set_garbage(void)
 	return (head);
 }
 
-t_garbage *get_garbage(t_garbage *update, int reset)
+t_garbage	*get_garbage(t_garbage *update, int reset)
 {
-	static t_garbage *head;
+	static t_garbage	*head;
 
 	if (head == NULL)
 	{
@@ -59,11 +59,11 @@ void	*g_malloc(size_t size)
 
 void	garbage_destroy(void)
 {
-	t_garbage *lst;
+	t_garbage	*lst;
 
 	lst = get_garbage(NULL, 0);
 	if (!lst)
-		return;
+		return ;
 	garbage_lstclear(&lst);
 	get_garbage(NULL, 1);
 }

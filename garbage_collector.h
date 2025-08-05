@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   garbge_collector.h                                 :+:      :+:    :+:   */
+/*   garbage_collector.h                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: badr <badr@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/05 00:01:01 by badr              #+#    #+#             */
-/*   Updated: 2025/08/05 00:03:03 by badr             ###   ########.fr       */
+/*   Updated: 2025/08/05 14:11:42 by badr             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@
 
 typedef struct s_malloc_lst
 {
-    void            *content;
-    int             lock;
-    struct s_malloc_lst *next;
-    struct s_malloc_lst *prev;
+    void			*content;
+    int				lock;
+    struct s_malloc_lst	*next;
+    struct s_malloc_lst	*prev;
 }   t_garbage;
 
 // gabge_collector.c
@@ -36,3 +36,5 @@ void	garbage_destroy(void);
 //ft_free.c
 void	g_free(void *ptr);
 #endif
+
+/// Fichier pas normée

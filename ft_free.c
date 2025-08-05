@@ -6,12 +6,11 @@
 /*   By: badr <badr@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/05 00:07:12 by badr              #+#    #+#             */
-/*   Updated: 2025/08/05 00:07:15 by badr             ###   ########.fr       */
+/*   Updated: 2025/08/05 14:06:10 by badr             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "garbage_collector.h"
-
 
 static void	g_free_first(t_garbage *node)
 {
@@ -53,7 +52,7 @@ void	g_free(void *ptr)
 		return ;
 	temp = lst;
 	last = garbage_lstlast(&lst);
-	while(temp)
+	while (temp)
 	{
 		if (ptr == lst->content)
 			return (g_free_first(temp));
