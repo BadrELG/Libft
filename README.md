@@ -1,8 +1,8 @@
-# LibFT - Bibliothèque C Personnalisée
+# Libft - Bibliothèque C Personnalisée
 
 ## 📚 Description
 
-LibFT est une bibliothèque C qui recrée un ensemble de fonctions standard de la libc ainsi que d'autres fonctions utilitaires. Ce projet fait partie du cursus de l'école 42 et constitue une base fondamentale pour les projets futurs.
+Libft est une bibliothèque C qui recrée un ensemble de fonctions standard de la libc ainsi que d'autres fonctions utilitaires. Ce projet fait partie du cursus de l'école 42 et constitue une base fondamentale pour les projets futurs.
 
 ## 🛠️ Fonctions Implémentées
 
@@ -40,8 +40,6 @@ LibFT est une bibliothèque C qui recrée un ensemble de fonctions standard de l
 - `ft_atoi` : Convertit une chaîne en entier
 - `ft_itoa` : Convertit un entier en chaîne
 
-### Fonctions Supplémentaires
-
 #### Manipulation de chaînes
 - `ft_substr` : Extrait une sous-chaîne
 - `ft_strjoin` : Joint deux chaînes
@@ -68,22 +66,22 @@ LibFT est une bibliothèque C qui recrée un ensemble de fonctions standard de l
 - `ft_lstiter` : Applique une fonction à chaque nœud
 - `ft_lstmap` : Crée une nouvelle liste en appliquant une fonction
 
-### Fonctions Bonus
-
-#### Get Next Line
-- `get_next_line` : Lit une ligne depuis un descripteur de fichier
-- `get_next_line_utils` : Fonctions utilitaires pour GNL
-
-#### Gestion de Mémoire
-- `ft_malloc` : Wrapper pour malloc avec gestion d'erreur
-- `ft_free` : Libération sécurisée de mémoire
-- `ft_tab_free` : Libération de tableaux
-- `garbage` : Système de gestion automatique de la mémoire
+## Fonctions Supplémentaires
 
 #### Printf
 - `ft_printf` : Recréation de printf
 - `ft_convert` : Fonctions de conversion pour printf
 - `ft_2convert` : Fonctions de conversion supplémentaires
+
+#### Get Next Line
+- `get_next_line` : Lit une ligne depuis un descripteur de fichier
+- `get_next_line_utils` : Fonctions utilitaires pour GNL
+
+#### Garbage Collector
+- `ft_malloc` : Wrapper pour malloc avec gestion d'erreur
+- `ft_free` : Libération sécurisée de mémoire
+- `ft_tab_free` : Libération de tableaux
+- `garbage` : Système de gestion automatique de la mémoire
 
 ## 🚀 Compilation
 
