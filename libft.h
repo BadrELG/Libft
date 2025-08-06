@@ -6,7 +6,7 @@
 /*   By: badr <badr@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/04 13:36:43 by bael-gho          #+#    #+#             */
-/*   Updated: 2025/08/05 16:44:18 by badr             ###   ########.fr       */
+/*   Updated: 2025/08/06 09:57:51 by badr             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@
 # include <unistd.h>
 # include <stdarg.h>
 # include <stddef.h>
-# include "garbage_collector.h"
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 10
@@ -94,13 +93,12 @@ int		ft_conv(char c, va_list args);
 int		ft_putptr(void *ptr);
 int		ft_putchar(char c);
 int		ft_putstr(char *str);
+
+/// Printf Functions
+
 int		ft_printf(const char *format, ...);
 int		ft_putnbr(int n);
 int		ft_putnbr_unsigned(unsigned int n);
-
-/// Personal Fonctions 
-
-void	ft_tab_free(char **tab);
 
 /// Get Next Line Functions
 char	*get_next_line(int fd);
