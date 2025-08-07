@@ -6,7 +6,7 @@
 /*   By: badr <badr@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/04 13:36:43 by bael-gho          #+#    #+#             */
-/*   Updated: 2025/08/06 09:57:51 by badr             ###   ########.fr       */
+/*   Updated: 2025/08/07 15:53:20 by badr             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # include <unistd.h>
 # include <stdarg.h>
 # include <stddef.h>
+# include "garbage.h"
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 10
@@ -31,14 +32,6 @@ typedef struct s_list
 	void			*content;
 	struct s_list	*next;
 }	t_list;
-
-typedef struct s_malloc_lst
-{
-	void				*content;
-	int					lock;
-	struct s_malloc_lst	*next;
-	struct s_malloc_lst	*prev;
-}	t_garbage;
 
 /// LibFt Function
 int		ft_isalpha(int c);
@@ -106,18 +99,5 @@ size_t	ft_checklen(char *str, char str_line);
 char	*ft_strcpy(char *dest, char *src);
 size_t	ft_check_new_line(char *str);
 char	*ft_clean_line(char *line);
-
-/// Garbage Collector Functions
-
-t_garbage	*garbage_lstnew(void);
-t_garbage	*set_garbage(void);
-t_garbage	*garbage_lstlast(t_garbage **lst);
-t_garbage	*get_garbage(t_garbage *update, int reset);
-
-void	garbage_lstaddback(t_garbage *new, t_garbage **lst);
-void	garbage_lstclear(t_garbage **lst);
-void	*g_malloc(size_t size);
-void	garbage_destroy(void);
-void	g_free(void *ptr);
 
 #endif
