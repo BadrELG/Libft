@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   garbage.h                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: badr <badr@student.42.fr>                  +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/08/07 15:59:15 by badr              #+#    #+#             */
+/*   Updated: 2025/08/07 16:01:54 by badr             ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef GARBAGE_COLLECTOR_H
 # define GARBAGE_COLLECTOR_H
 
@@ -13,14 +25,15 @@ typedef struct s_malloc_lst
 
 // garbage_collector.c
 t_garbage	*garbage_lstnew(void);
-t_garbage *garbage_lstlast(t_garbage **lst);
-void	garbage_lstaddback(t_garbage *new, t_garbage **lst);
-void	garbage_lstclear(t_garbage **lst);
+t_garbage	*garbage_lstlast(t_garbage **lst);
+void		garbage_lstaddback(t_garbage *new, t_garbage **lst);
+void		garbage_lstclear(t_garbage **lst);
 //ft_malloc.c
-t_garbage *set_garbage(void);
-t_garbage *get_garbage(t_garbage *update, int reset);
-void	*g_malloc(size_t size);
-void	garbage_destroy(void);
+t_garbage	*set_garbage(void);
+t_garbage	*get_garbage(t_garbage *update, int reset);
+void		*g_malloc(size_t size);
+void		garbage_destroy(void);
 //ft_free.c
-void	g_free(void *ptr);
+void		g_free(void *ptr);
+
 #endif
