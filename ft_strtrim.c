@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bael-gho <bael-gho@student.42.fr>          +#+  +:+       +#+        */
+/*   By: badr <badr@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/04 13:33:38 by bael-gho          #+#    #+#             */
-/*   Updated: 2025/05/12 23:51:01 by bael-gho         ###   ########.fr       */
+/*   Updated: 2025/08/07 15:05:28 by badr             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 	while (end > start && is_set((unsigned char)*(end - 1), set) == 1)
 		end--;
 	trimmed_len = end - start;
-	trimmed_str = malloc(trimmed_len + 1);
+	trimmed_str = g_malloc(trimmed_len + 1);
 	if (trimmed_str == NULL)
 	{
 		return (NULL);

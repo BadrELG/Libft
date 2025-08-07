@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bael-gho <bael-gho@student.42.fr>          +#+  +:+       +#+        */
+/*   By: badr <badr@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/04 13:22:40 by bael-gho          #+#    #+#             */
-/*   Updated: 2025/05/07 03:18:36 by bael-gho         ###   ########.fr       */
+/*   Updated: 2025/08/07 15:04:26 by badr             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static char	*ft_allocate_word(char const *s, char c)
 	j = 0;
 	while (s[i] != c && s[i])
 		i++;
-	word = (char *)malloc(sizeof(char) * (i + 1));
+	word = (char *)g_malloc(sizeof(char) * (i + 1));
 	if (!word)
 		return (NULL);
 	while (j < i)
@@ -51,19 +51,6 @@ static char	*ft_allocate_word(char const *s, char c)
 	}
 	word[j] = '\0';
 	return (word);
-}
-
-static void	ft_free_array(char **array, int index)
-{
-	int	i;
-
-	i = 0;
-	while (i < index)
-	{
-		free(array[i]);
-		i++;
-	}
-	free(array);
 }
 
 static char	**process_array(char const *s, char c, char **out)
@@ -81,10 +68,7 @@ static char	**process_array(char const *s, char c, char **out)
 		{
 			out[j] = ft_allocate_word(&s[i], c);
 			if (!out[j])
-			{
-				ft_free_array(out, j);
 				return (NULL);
-			}
 			j++;
 		}
 		while (s[i] != c && s[i])
@@ -101,7 +85,7 @@ char	**ft_split(char const *s, char c)
 	if (!s)
 		return (NULL);
 	word_count = ft_count_words(s, c);
-	out = (char **)malloc(sizeof(char *) * (word_count + 1));
+	out = (char **)g_malloc(sizeof(char *) * (word_count + 1));
 	if (!out)
 		return (NULL);
 	out = process_array(s, c, out);

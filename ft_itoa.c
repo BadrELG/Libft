@@ -6,7 +6,7 @@
 /*   By: badr <badr@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/04 12:31:50 by bael-gho          #+#    #+#             */
-/*   Updated: 2025/08/05 14:09:26 by badr             ###   ########.fr       */
+/*   Updated: 2025/08/07 15:00:36 by badr             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ char	*ft_itoa(int n)
 
 	nbr = n;
 	i = len(nbr);
-	tab = malloc(sizeof(char) * len(nbr) + 1);
+	tab = g_malloc(sizeof(char) * len(nbr) + 1);
 	if (!tab)
 		return (NULL);
 	tab[i] = '\0';
