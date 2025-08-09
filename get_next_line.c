@@ -5,86 +5,81 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: badr <badr@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/05 00:15:08 by badr              #+#    #+#             */
-/*   Updated: 2025/08/05 00:15:20 by badr             ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: tcohen <tcohen@student.42.fr>              +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/01 13:50:20 by tcohen            #+#    #+#             */
-/*   Updated: 2024/10/13 19:52:06 by tcohen           ###   ########.fr       */
+/*   Created: 2025/06/02 20:03:45 by bael-gho          #+#    #+#             */
+/*   Updated: 2025/08/09 23:37:35 by badr             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static char	*ft_str_g_free_join(char *line, char *buffer)
+static char	*read_line(int fd, char *stash, char *buffer)
 {
-	size_t	line_len;
-	size_t	buffer_len;
-	char	*temp_line;
+	int	bytes_read;
 
-	line_len = ft_checklen(line, 's');
-	buffer_len = ft_checklen(buffer, 's');
-	temp_line = (char *)g_malloc((line_len + buffer_len + 1) * sizeof(char));
-	if (!temp_line)
-		return (g_free(line), NULL);
-	ft_strcpy(temp_line, line);
-	g_free(line);
-	ft_strcpy(&temp_line[line_len], buffer);
-	return (temp_line);
+	bytes_read = 1;
+	while (!(ft_strchr(stash, '\n') && bytes_read > 0))
+	{
+		bytes_read = read(fd, buffer, BUFFER_SIZE);
+		if (bytes_read == -1)
+		{
+			free(buffer);
+			free(stash);
+			return (NULL);
+		}
+		else if (bytes_read == 0)
+			break ;
+		buffer[bytes_read] = '\0';
+		stash = ft_strjoin(stash, buffer);
+		if (!stash)
+			return (NULL);
+	}
+	return (stash);
 }
 
-static char	*ft_read_file(int fd, char *line, char *buffer)
+static char	*clean(char *line)
 {
-	long	read_output;
+	char	*new_line;
+	int		i;
 
-	read_output = 0;
-	while (ft_check_new_line(line) == 0)
+	i = 0;
+	if (!line)
+		return (NULL);
+	while (line[i] != '\0' && line[i] != '\n')
+		i++;
+	if (line[i] == '\0' || line[i + 1] == '\0')
+		return (NULL);
+	new_line = ft_substr(line, i + 1, ft_strlen(line) - i);
+	if (!new_line)
 	{
-		buffer[0] = '\0';
-		read_output = read(fd, buffer, BUFFER_SIZE);
-		if (read_output == -1)
-			return (g_free(line), NULL);
-		buffer[read_output] = '\0';
-		if (read_output == 0)
-			break ;
-		line = ft_str_g_free_join(line, buffer);
-		if (!line)
-			return (g_free(line), NULL);
+		g_free(new_line);
+		return (NULL);
 	}
-	return (line);
+	line[i + 1] = '\0';
+	return (new_line);
 }
 
 char	*get_next_line(int fd)
 {
-	static char	rest_line[BUFFER_SIZE + 1];
-	char		*line;
+	char		*result;
+	char		*buffer;
+	static char	*stash[1024];
 
-	if (BUFFER_SIZE <= 0 || fd < 0)
+	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
+	{
+		if (stash[fd])
+		{
+			g_free(stash[fd]);
+			stash[fd] = NULL;
+		}
 		return (NULL);
-	line = (char *)g_malloc((ft_checklen(rest_line, 's') + 1) * sizeof(char));
-	line[0] = '\0';
-	ft_strcpy(line, rest_line);
-	line = ft_read_file(fd, line, rest_line);
-	if (!line)
-		return (g_free(line), NULL);
-	if (ft_check_new_line(line) == 1)
-	{
-		ft_strcpy(rest_line, &line[ft_checklen(line, 'l')]);
-		ft_clean_line(line);
 	}
-	if (ft_check_new_line(line) == 0)
-	{
-		rest_line[0] = '\0';
-		if (line [0] == '\0')
-			return (g_free(line), NULL);
-	}
-	return (line);
+	buffer = g_malloc(sizeof(char) * (BUFFER_SIZE + 1));
+	if (!buffer)
+		return (g_free(stash[fd]), NULL);
+	result = read_line(fd, stash[fd], buffer);
+	g_free(buffer);
+	if (!result)
+		return (NULL);
+	stash[fd] = clean(result);
+	return (result);
 }

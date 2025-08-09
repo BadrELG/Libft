@@ -6,7 +6,7 @@
 /*   By: badr <badr@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/04 13:36:43 by bael-gho          #+#    #+#             */
-/*   Updated: 2025/08/08 19:03:55 by badr             ###   ########.fr       */
+/*   Updated: 2025/08/09 21:54:24 by badr             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,25 +85,21 @@ void		ft_lstdelone(t_list *lst, void (*del)(void*));
 void		ft_lstclear(t_list **lst, void (*del)(void*));
 void		ft_lstiter(t_list *lst, void (*f)(void *));
 int			ft_lstsize(t_list *lst);
-int			ft_puthex(char c, unsigned long n);
-int			ft_putpercent(void);
-int			ft_conv(char c, va_list args);
-int			ft_putptr(void *ptr);
-int			ft_putchar(char c);
-int			ft_putstr(char *str);
 
 /// Printf Functions
 
 int			ft_printf(const char *format, ...);
+int			ft_conv(char c, va_list args);
 int			ft_putnbr(int n);
 int			ft_putnbr_unsigned(unsigned int n);
+int			ft_puthex(char c, unsigned long n);
+int			ft_putpercent(void);
+int			ft_putptr(void *ptr);
+int			ft_putchar(char c);
+int			ft_putstr(char *str);
 
 /// Get Next Line Functions
 char		*get_next_line(int fd);
-size_t		ft_checklen(char *str, char str_line);
-char		*ft_strcpy(char *dest, char *src);
-size_t		ft_check_new_line(char *str);
-char		*ft_clean_line(char *line);
 
 /// Garbage Collector Functions
 
