@@ -78,10 +78,9 @@ Libft est une bibliothèque C qui recrée un ensemble de fonctions standard de l
 - `get_next_line_utils` : Fonctions utilitaires pour GNL
 
 #### Garbage Collector
-- `ft_malloc` : Wrapper pour malloc avec gestion d'erreur
-- `ft_free` : Libération sécurisée de mémoire
-- `ft_tab_free` : Libération de tableaux
-- `garbage` : Système de gestion automatique de la mémoire
+- `g_malloc` : Wrapper pour malloc avec gestion d'erreur
+- `g_free` : Libération sécurisée de mémoire
+- `garbage_destroy` : Système de gestion automatique de la mémoire
 
 ## 🚀 Compilation
 
@@ -102,7 +101,7 @@ int main(void)
 {
     char *str = ft_strdup("Hello, World!");
     ft_putendl_fd(str, 1);
-    ft_free(str);
+    g_free(str);
     return (0);
 }
 ```
